@@ -1,5 +1,7 @@
 @import "./_variables";
 .App {
+  position: relative;
+  min-height: 100vh;
   &ImageUpload {
     display: flex;
     justify-content: center;

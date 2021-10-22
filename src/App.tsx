@@ -9,16 +9,19 @@ import * as cocoSSD from "@tensorflow-models/coco-ssd";
 import DetectedArea from "./components/DetectedArea";
 import { doesImageExist } from "./utils";
 import { ToastContainer, toast } from "react-toastify";
+import FullPageLoader from "./components/FullPageLoader";
 
 function App() {
   const [modelCoco, setModelCoco] = useState<any>(null);
   const [textUrlInput, setTextUrlInput] = useState("");
   const [imageURL, setImageURL] = useState<null | string>(null);
   const [resultsCoco, setResultsCoco] = useState<any>([]);
+  const [loading, setLoading] = useState(true);
 
   const loadModelCoco = async () => {
     try {
       const model = await cocoSSD.load();
+      setLoading(false);
       setModelCoco(model);
     } catch (error) {
       console.log("errorCoco", error);
@@ -108,6 +111,7 @@ function App() {
         )}
       </div>
       <ToastContainer />
+      {loading && <FullPageLoader />}
     </div>
   );
 }
