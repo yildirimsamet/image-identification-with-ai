@@ -1,0 +1,11 @@
+@import "../../styles/_variables";
+.wrapper{
+    &Title{
+        position: absolute;
+        bottom: -14px;
+        right: -4px;
+        transform: translateY(100%);
+        color: $red;
+        padding: 2px;
+    }
+}
